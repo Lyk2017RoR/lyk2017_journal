@@ -29,9 +29,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include FactoryGirl::Syntax::Methods
-  config.include Paperclip::Shoulda::Matchers
-  config.include Devise::Test::ControllerHelpers, :type => :controller
-  config.include AuthenticationHelper, :type => :controller
+  # config.include Paperclip::Shoulda::Matchers
+  # config.include Devise::Test::ControllerHelpers, :type => :controller
+  # config.include AuthenticationHelper, :type => :controller
 end
 
 Shoulda::Matchers.configure do |config|
