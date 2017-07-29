@@ -16,10 +16,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'derailed'
+  gem 'stackprof'
   gem 'bullet'
 end
 
@@ -33,6 +37,8 @@ group :development do
 end
 
 group :test do
+  # gem 'capybara'
+  # gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'vcr', require: false
   gem 'shoulda-matchers', '~> 3.0'
