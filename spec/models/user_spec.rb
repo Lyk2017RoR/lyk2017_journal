@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  email      :string
 #  password   :string
-#  role       :integer
+#  role       :integer          default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -22,4 +22,5 @@ RSpec.describe User, type: :model do
   it { should have_many :liked_posts }
   it { should allow_value("utku@omnico.io").for(:email) }
   it { should_not allow_value("aaaomnico.io").for(:email) }
+  it { should define_enum_for(:role).with([:regular, :editor, :admin]) }
 end

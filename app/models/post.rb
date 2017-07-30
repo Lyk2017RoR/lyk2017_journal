@@ -23,4 +23,5 @@ class Post < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   belongs_to :author, class_name: "User", foreign_key: "user_id"
   validates :title, :body, :status, presence: true
+  enum status: [:draft, :secret, :visible]
 end
