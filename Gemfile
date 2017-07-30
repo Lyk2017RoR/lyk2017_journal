@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -28,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'byebug'
   gem 'annotate'
   gem 'listen'
   gem 'spring'

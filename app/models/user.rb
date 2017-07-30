@@ -2,15 +2,16 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  email      :string
-#  password   :string
-#  role       :integer          default("0")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  email           :string
+#  password_digest :string           not null
+#  role            :integer          default("0")
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class User < ApplicationRecord
+  has_secure_password
   has_one :profile
   has_many :posts
   has_many :likes
