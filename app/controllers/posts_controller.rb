@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authorize, except: [:index, :show]
   def index
     @posts = Post.all
   end
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find params[:id]
   end
 
   def show
