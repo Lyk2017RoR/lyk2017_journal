@@ -1,5 +1,5 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
+<%= simple_format @post.body %>
 <% if @post.author == current_user %>
   <%= link_to "Edit", edit_post_path(@post) %>
   <%= link_to 'Delete', post_path(@post), method: :delete %>
