@@ -12,6 +12,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
+      authenticate_user user
       get :edit, id: user.id
       expect(response).to have_http_status(:success)
       expect(assigns(:user)).to eq user
@@ -20,13 +21,13 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #show" do
     it "assigns user variable to user and returns success" do
-      session[:user_id] = user.id
+      authenticate_user user
       get :show, id: user.id
       expect(response).to have_http_status(:success)
     end
 
     it "equals session user_id to user.id" do
-      session[:user_id] = user.id
+      authenticate_user user
       get :show, id: user.id
       expect(session[:user_id]).to eq user.id
     end
