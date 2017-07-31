@@ -3,3 +3,5 @@
 
 <%= current_user.email %>
 <%= link_to 'Sign Out', session_path(current_user), method: :delete %>
+
+<%= link_to 'New Post', new_post_path %>
