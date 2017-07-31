@@ -30,7 +30,18 @@ RSpec.feature "Posts", type: :feature do
       visit post_path(post)
       expect(page).not_to have_content 'Edit'
     end
-    scenario 'can delete his posts'
-    scenario 'can update a single post'
+    scenario 'can delete his posts' do
+      visit post_path(post)
+      expect(page).to have_link 'Delete'
+      click_link 'Delete'
+      expect(page).not_to have_content post.title
+    end
+    scenario 'can update a single post' do
+      visit edit_post_path(post)
+      expect(page).to have_selector "input[value='#{post.title}']"
+      fill_in 'post_title', with: 'sdasdasdasdadsa'
+      click_button 'Submit'
+      expect(page).not_to have_selector "input[value='#{post.title}']"
+    end
   end
 end

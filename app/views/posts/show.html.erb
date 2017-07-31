@@ -3,4 +3,5 @@
 <%= @post.status %>
 <% if @post.author == current_user %>
   <%= link_to "Edit", edit_post_path(@post) %>
+  <%= link_to 'Delete', post_path(@post), method: :delete %>
 <% end %>

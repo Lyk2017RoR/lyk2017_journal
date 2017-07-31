@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authorize, except: [:index, :show]
+  before_action :find_post, only: [:edit, :show, :destroy, :update]
   def index
     @posts = Post.all
   end
@@ -20,15 +21,30 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find params[:id]
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to post_path(path)
+    else
+      render 'edit'
+    end
   end
 
   def show
-    @post = Post.find params[:id]
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to posts_path, notice: "Post Deleted"
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :status, :user_id)
+    params.require(:post).permit(:title, :body, :status)
+  end
+
+  def find_post
+    @post = Post.find params[:id]
   end
 end
