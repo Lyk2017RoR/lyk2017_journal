@@ -18,9 +18,9 @@
 
 FactoryGirl.define do
   factory :post do
-    title "MyString"
-    body "MyText"
-    user nil
+    title { Faker::Lorem.sentence }
+    body { Faker::Lorem.paragraph }
+    author user
     status 1
     slug "MyString"
   end
