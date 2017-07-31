@@ -1,7 +1,14 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
-<%= @post.status %>
 <% if @post.author == current_user %>
   <%= link_to "Edit", edit_post_path(@post) %>
   <%= link_to 'Delete', post_path(@post), method: :delete %>
 <% end %>
+<br />
+<ul>
+<% @post.comments.each do |comment| %>
+  <%= render "comments/comment", comment: comment %>
+<% end %>
+</ul>
+<br />
+<%= render partial: 'comments/form' %>
