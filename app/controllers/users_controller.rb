@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: :show
   def new
     @user = User.new
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless params[:id] == current_user.id.to_s
   end
 
   private
