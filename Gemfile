@@ -40,7 +40,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'vcr', require: false
   gem 'shoulda-matchers', '~> 3.0'
