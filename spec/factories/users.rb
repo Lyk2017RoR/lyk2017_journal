@@ -12,8 +12,10 @@
 
 FactoryGirl.define do
   factory :user do
-    email "MyString"
-    password "MyString"
-    role 1
+    email { Faker::Internet.email }
+    # password_digest { BCrypt::Password.create("my password") }
+    password "asdqwe12"
+    password_confirmation "asdqwe12"
+    role 0
   end
 end
