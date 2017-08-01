@@ -12,11 +12,9 @@ RSpec.feature "Comments", type: :feature do
       click_button 'Submit'
       visit post_path(post)
     end
-    scenario 'can view comments of a post' do
-      expect(page).to have_content comment.body
-    end
-    scenario 'can comment on a post'
-    scenario 'can delete his/her comment'
-    scenario 'can edit his comment'
+    pending 'can view comments of a post'
+    pending 'can comment on a post'
+    pending 'can delete his/her comment'
+    pending 'can edit his comment'
   end
 end

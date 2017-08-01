@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.build(comment_params)
 
-    if @comment.save!
+    if @comment.save
       redirect_to post_path @post
     else
       redirect_to post_path(@post), notice: 'Yorum kaydedilemedi.'

@@ -18,8 +18,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    post nil
-    user nil
+    post
+    user
     body "MyString"
     status 1
   end

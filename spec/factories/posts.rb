@@ -21,7 +21,7 @@ FactoryGirl.define do
     title { Faker::Lorem.sentence }
     body { Faker::Lorem.paragraph }
     user_id 1
-    status 1
+    status 'draft'
     slug "MyString"
   end
 end
