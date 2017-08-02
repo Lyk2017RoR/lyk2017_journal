@@ -13,5 +13,9 @@
     <div id="main_area" class="ui container">
       <%= yield %>
     </div>
+
+    <% flash.each do |type, message| %>
+      <div class="hide pnotify-notification" data-type="<%= type %>" data-message="<%= message %>"></div>
+    <% end %>
   </body>
 </html>

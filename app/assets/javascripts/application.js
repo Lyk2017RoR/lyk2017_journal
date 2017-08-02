@@ -11,7 +11,17 @@
 // about supported directives.
 //
 //= require jquery
+//= require pnotify.custom
 //= require semantic-ui
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $('.pnotify-notification').each(function(index){
+    new PNotify({
+      text: $(this).data('message'),
+      type: $(this).data('type')
+    });
+  });
+});
