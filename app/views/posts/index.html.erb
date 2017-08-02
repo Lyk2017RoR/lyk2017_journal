@@ -1,5 +1,21 @@
-<h1>Posts#index</h1>
+<h1>Günlükler</h1>
+<div class="float-right">
+  <%= link_to 'Yeni Yazı Ekle', new_post_path %>
+</div>
 
-<% @posts.each do |post| %>
-  <%= link_to post.title, post_path(post) %>
-<% end %>
+<table class="table">
+  <thead>
+    <th>Günlük Adı</th>
+    <th>Yazar</th>
+    <th>Yayınlanma Tarihi</th>
+  </thead>
+  <tbody>
+  <% @posts.each do |post| %>
+      <tr>
+    <td><%= link_to post.title, post_path(post) %></td>
+    <td><%= link_to post.author.email, user_path(post.author) %></td>
+    <td><%= post.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
