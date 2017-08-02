@@ -23,4 +23,5 @@ class User < ApplicationRecord
   validates :terms_of_service, acceptance: true, presence: true, on: :create
   validates :password, length: { minimum: 8, maximum: 30 }
   enum role: [:regular, :editor, :admin]
+  validates :terms_of_use, acceptance: true
 end

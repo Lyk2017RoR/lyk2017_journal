@@ -25,4 +25,18 @@ class Post < ApplicationRecord
   validates :title, :body, :status, presence: true
   enum status: [:draft, :secret, :visible]
   accepts_nested_attributes_for :comments
+
+  validate :check_comment_size, on: :create
+  validate :check_time_limit_on_update, on: :update
+
+  def check_comment_size
+    comment_size = author.comments.size
+    errors[:base] << "Minimum <strong>5</strong> comment
+                      required for performing this action.
+                      Remaining comment count is #{5-comment_size}" if comment_size < 5
+  end
+
+  def check_time_limit_on_update
+    errors.add(:created_at, 'You can not update this post in 10 minutes') if created_at > 6.minute.ago
+  end
 end
