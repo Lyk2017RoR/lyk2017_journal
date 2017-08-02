@@ -1,12 +1,4 @@
-<h4 class="ui dividing header">
-  <%= @user.full_name %>
-
-  <% if @user.id == current_user.id %>
-  <div class="floating ui teal label">
-    <%= link_to '<i class="icon edit"></i>'.html_safe, edit_user_path(@user) %>
-  </div>
-  <% end %>
-</h4>
+<h4 class="ui dividing header"><%= @user.full_name %></h4>
 
 
 <div id="user_show" class="ui grid">
