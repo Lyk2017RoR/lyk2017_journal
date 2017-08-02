@@ -282,6 +282,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   derailed
+  execjs
   factory_girl_rails
   faker
   guard-rspec
@@ -306,4 +307,4 @@ DEPENDENCIES
   vcr
 
 BUNDLED WITH
-   1.14.6
+   1.15.3
