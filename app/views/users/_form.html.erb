@@ -15,17 +15,17 @@
     </h4>
     <div class="field">
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, autofocus: true, autocomplete: :off, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, autocomplete: :off, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: :off, required: true %>
     </div>
 
 
@@ -34,19 +34,19 @@
 
       <div class="field">
         <%= p.label :first_name %>
-        <%= p.text_field :first_name %>
+        <%= p.text_field :first_name, autocomplete: :off, required: true %>
       </div>
 
       <div class="field">
         <%= p.label :last_name %>
-        <%= p.text_field :last_name %>
+        <%= p.text_field :last_name, autocomplete: :off, required: true %>
       </div>
     <% end %>
 
     <% if @user.id.nil? %>
     <div class="field">
       <div class="ui checkbox">
-        <%= f.check_box :terms_of_service, tabindex: 0, disabled: true %>
+        <%= f.check_box :terms_of_service, tabindex: 0, disabled: true, required: true %>
         <%= f.label :terms_of_service %>
       </div>
     </div>

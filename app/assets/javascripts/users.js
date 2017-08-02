@@ -26,4 +26,5 @@ function open_terms_modal() {
 
 function set_terms_status(status) {
   $('#user_terms_of_service').prop('checked', status);
+  $('#user_terms_of_service').prop('disabled', !status);
 }
