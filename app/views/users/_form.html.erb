@@ -1,16 +1,57 @@
-<%= form_for @user do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %><br />
-    <%= f.label :password %>
-    <%= f.password_field :password %><br />
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %><br />
+<%= form_for @user, html: { class: 'ui form error' } do |f| %>
+    <% if @user.errors.present? %>
+      <div class="ui error message">
+        <div class="header">Hata Mesajları</div>
+        <ul class="form-error">
+          <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h4 class="ui dividing header">
+      Hesap Bilgileri
+    </h4>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
 
     <%= f.fields_for :profile do |p| %>
-      <%= p.label :first_name %>
-      <%= p.text_field :first_name %>
-      <%= p.label :last_name %>
-      <%= p.text_field :last_name %>
+      <h4 class="ui dividing header">Kişisel Bilgiler</h4>
+
+      <div class="field">
+        <%= p.label :first_name %>
+        <%= p.text_field :first_name %>
+      </div>
+
+      <div class="field">
+        <%= p.label :last_name %>
+        <%= p.text_field :last_name %>
+      </div>
     <% end %>
-    <%= f.submit "Submit" %><br />
+
+    <% if @user.id.nil? %>
+    <div class="field">
+      <div class="ui checkbox">
+        <%= f.check_box :terms_of_service, tabindex: 0 %>
+        <%= f.label :terms_of_service %>
+      </div>
+    </div>
+    <% end %>
+
+    <%= f.button 'Kayıt Ol', class: 'ui button fluid primary', type: :submit %>
+
 <% end %>
