@@ -1,8 +1,91 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h4 class="ui dividing header">
+  <%= @user.full_name %>
 
-<%= current_user.email %>
-<%= link_to 'Sign Out', session_path(current_user), method: :delete %>
+  <% if @user.id == current_user.id %>
+  <div class="floating ui teal label">
+    <%= link_to '<i class="icon edit"></i>'.html_safe, edit_user_path(@user) %>
+  </div>
+  <% end %>
+</h4>
 
-<%= link_to 'New Post', new_post_path %>
-<%= link_to 'Profilimi Düzenle', edit_user_path(current_user) %>
+
+<div id="user_show" class="ui grid">
+  <div class="four wide column">
+    <%= image_tag @user.profile.medium_photo, class: 'ui medium rounded image' %>
+  </div>
+  <div class="twelve wide column">
+    <div id="user_profile_tab" class="ui secondary pointing menu">
+      <a class="active item" data-tab="first">
+        Hakkında
+      </a>
+      <a class="item" data-tab="second">
+        Yazılar
+        <span class="ui blue circular label"><%= @user.posts.count %></span>
+      </a>
+      <a class="item" data-tab="third">
+        Yorumlar
+        <span class="ui blue circular label"><%= @user.comments.count %></span>
+      </a>
+    </div>
+    <div class="ui tab segment active" data-tab="first">
+      <table class="ui striped table">
+        <tbody>
+          <tr>
+            <td>Adı</td>
+            <td><%= @user.profile.first_name %></td>
+          </tr>
+          <tr>
+            <td>Soyadı</td>
+            <td><%= @user.profile.last_name %></td>
+          </tr>
+          <tr>
+            <td>Kayıt Tarihi</td>
+            <td><%= @user.created_at.to_formatted_s(:long) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ui tab segment" data-tab="second">
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Yazı Başlığı</th>
+            <th>Yorum Sayısı</th>
+            <th>Yayınlanma Tarihi</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @posts.each_with_index do |post, index| %>
+            <tr>
+              <td class="row"><%= index + 1 %></td>
+              <td><%= link_to post.title, post_path(post) %></td>
+              <td><%= post.comments.count %></td>
+              <td><%= post.created_at.to_formatted_s(:long) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="ui tab segment" data-tab="third">
+      <table class="ui striped table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Yazı</th>
+          <th>Yayınlanma Tarihi</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @comments.each_with_index do |comment, index| %>
+            <tr>
+              <td class="row"><%= index + 1 %></td>
+              <td><%= link_to comment.post.title, post_path(comment.post) %></td>
+              <td><%= comment.created_at.to_formatted_s(:long) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
