@@ -1,31 +1,21 @@
-<div class="ui borderless top fixed main menu">
+<div id="main_menu" class="ui borderless top fixed main menu">
   <div class="ui container">
     <div href="#" class="header item">
       Herkesin Günlüğü
     </div>
+    <%= link_to 'Ana Sayfa', root_path, class: 'item' %>
     <%= link_to 'Yazarlar', users_path, class: 'item' %>
     <%= link_to 'Günlükler', posts_path, class: 'item' %>
 
     <div class="right menu"></div>
     <% if current_user %>
-    <a href="#" class="ui right floated dropdown item">
+    <div class="ui simple dropdown item">
       Hesabım <i class="dropdown icon"></i>
       <div class="menu">
-        <div class="item">Link Item</div>
-        <div class="item">Link Item</div>
-        <div class="divider"></div>
-        <div class="header">Header Item</div>
-        <div class="item">
-          <i class="dropdown icon"></i>
-          Sub Menu
-          <div class="menu">
-            <div class="item">Link Item</div>
-            <div class="item">Link Item</div>
-          </div>
-        </div>
-        <div class="item">Link Item</div>
+        <%= link_to 'Profilim', user_path(current_user), class: 'item' %>
+        <%= link_to 'Çıkış Yap', session_path(current_user), method: :delete, class: 'item' %>
       </div>
-    </a>
+    </div>
     <% else %>
     <%= link_to 'Kayıt Ol', new_user_path, class: 'item' %>
     <%= link_to 'Giriş Yap', new_session_path, class: 'item' %>
