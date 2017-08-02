@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  email           :string
 #  password_digest :string           not null
-#  role            :integer          default("0")
+#  role            :integer          default("regular")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
