@@ -30,8 +30,7 @@ function open_terms_modal() {
 function set_terms_status(status) {
   var inputs = $('input[name="user[terms_of_use]"]');
 
-  $(inputs).each(function(){
+  $(inputs).each( function() {
     $(this).prop('checked', status);
-    $(this).prop('disabled', !status);
   });
 }
