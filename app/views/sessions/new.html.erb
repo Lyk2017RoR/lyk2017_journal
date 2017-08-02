@@ -1,7 +1,14 @@
-<h1>Login</h1>
+<%= form_for :user, url: sessions_path, html: { class: 'ui form error' } do |f| %>
+    <h4 class="ui dividing header">Kullanıcı Girişi</h4>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: :off, required: true %>
+    </div>
 
-<%= form_tag '/sessions' do %>
-  Email: <%= text_field_tag :email  %><br />
-  Password: <%= password_field_tag :password %><br />
-  <%= submit_tag 'Submit' %><br />
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: :off, required: true %>
+    </div>
+
+    <%= button_tag 'Giriş Yap', class: 'ui button fluid primary', type: :submit %>
 <% end %>
