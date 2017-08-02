@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     @user.build_profile if @user.profile.nil?
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    @user.build_profile if @user.profile.nil?
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -29,15 +38,6 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def edit
-    @user = User.find(params[:id])
-    @user.build_profile if @user.profile.nil?
-  end
-
-  def show
-    redirect_to root_path unless params[:id] == current_user.id.to_s
   end
 
   private
