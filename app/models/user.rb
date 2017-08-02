@@ -23,4 +23,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8, maximum: 30 }
   enum role: [:regular, :editor, :admin]
   validates :terms_of_use, acceptance: true
+
+  def full_name
+    [profile.first_name, profile.last_name].join(' ') if profile.present?
+  end
 end
