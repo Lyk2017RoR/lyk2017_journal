@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize, only: %i[edit update]
 
   def index
-    @users = User.all
+    @users = User.includes(:profile).all
   end
 
   def new
