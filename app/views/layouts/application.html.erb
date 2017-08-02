@@ -21,12 +21,21 @@
             <a class="nav-link" href="#">Ana Sayfa <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <% if current_user %>
-              <%= link_to "Çıkış Yap", session_path(current_user), method: :delete, class: 'nav-link', data: { confirm: 'Emin misiniz?' } %>
-            <% else %>
-              <%= link_to "Giriş Yap", new_session_path, class: 'nav-link' %>
-            <% end %>
+            <%= link_to 'Yazılar', posts_path, class: 'nav-link' %>
           </li>
+
+            <% if current_user %>
+              <li class="nav-item">
+              <%= link_to 'Çıkış Yap', session_path(current_user), method: :delete, class: 'nav-link', data: { confirm: 'Emin misiniz?' } %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+              <%= link_to 'Giriş Yap',new_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Kayıt Ol', new_user_path, class: 'nav-link' %>
+              </li>
+            <% end %>
         </ul>
       </div>
     </nav>
