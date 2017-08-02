@@ -1,5 +1,11 @@
+# User sign up, edit, show and index pages.
 class UsersController < ApplicationController
-  before_action :authorize, only: :show
+  before_action :authorize, only: %i[edit update]
+
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
     @user.build_profile if @user.profile.nil?
@@ -35,7 +41,10 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :terms_of_use, profile_attributes: [ :first_name, :last_name ])
+    params.require(:user).permit(:email, :password, :password_confirmation,
+                                 :terms_of_use,
+                                 profile_attributes: %i[first_name last_name])
   end
 end
