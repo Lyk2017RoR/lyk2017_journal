@@ -2,5 +2,9 @@ $font-url: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;sub
 @import 'semantic-ui';
 
 #main_area {
-  padding-top: 60px;
+  padding-top: 70px;
+}
+
+#main_menu a{
+  line-height: 25px;
 }
