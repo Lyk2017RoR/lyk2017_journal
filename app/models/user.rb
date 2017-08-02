@@ -20,7 +20,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   validates :email, :password, :role, presence: true
   validates :email, format: { with: /([\.\w\-]+@\w+\.\w{2,3}(?:\.?\.?\w{2,3})?)/ }
-  validates :terms_of_service, acceptance: true, presence: true, on: :create
   validates :password, length: { minimum: 8, maximum: 30 }
   enum role: [:regular, :editor, :admin]
   validates :terms_of_use, acceptance: true
