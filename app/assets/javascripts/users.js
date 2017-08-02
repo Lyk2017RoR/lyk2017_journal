@@ -1,10 +1,13 @@
 $(document).ready(function (){
+
   $('#user_terms_of_use').click(function(){
     open_terms_modal();
   });
   $('label[for="user_terms_of_use"]').click(function () {
     open_terms_modal()
   });
+
+  $('#user_profile_tab > .item').tab();
 });
 
 function open_terms_modal() {
@@ -25,6 +28,10 @@ function open_terms_modal() {
 }
 
 function set_terms_status(status) {
-  $('#user_terms_of_use').prop('checked', status);
-  $('#user_terms_of_use').prop('disabled', !status);
+  var inputs = $('input[name="user[terms_of_use]"]');
+
+  $(inputs).each(function(){
+    $(this).prop('checked', status);
+    $(this).prop('disabled', !status);
+  });
 }
