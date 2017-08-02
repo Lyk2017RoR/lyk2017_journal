@@ -14,7 +14,7 @@
 //= require pnotify.custom
 //= require semantic-ui
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 
 $(document).ready(function(){
