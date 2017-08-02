@@ -3,7 +3,7 @@
   <%= link_to 'Yeni Yazı Ekle', new_post_path %>
 </div>
 
-<table class="table">
+<table class="table table-striped table-bordered table-responsive">
   <thead>
     <th>Günlük Adı</th>
     <th>Yazar</th>
@@ -14,7 +14,7 @@
       <tr>
     <td><%= link_to post.title, post_path(post) %></td>
     <td><%= link_to post.author.email, user_path(post.author) %></td>
-    <td><%= post.created_at %></td>
+    <td><%= post.created_at.strftime('%d %B %Y %H:%M') %></td>
       </tr>
   <% end %>
   </tbody>

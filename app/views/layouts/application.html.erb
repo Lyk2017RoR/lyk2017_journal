@@ -26,11 +26,14 @@
 
             <% if current_user %>
               <li class="nav-item">
+                <%= link_to 'Profilim', user_path(current_user), class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
               <%= link_to 'Çıkış Yap', session_path(current_user), method: :delete, class: 'nav-link', data: { confirm: 'Emin misiniz?' } %>
               </li>
             <% else %>
               <li class="nav-item">
-              <%= link_to 'Giriş Yap',new_session_path, class: 'nav-link' %>
+              <%= link_to 'Giriş Yap', new_session_path, class: 'nav-link' %>
               </li>
               <li class="nav-item">
                 <%= link_to 'Kayıt Ol', new_user_path, class: 'nav-link' %>

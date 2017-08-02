@@ -12,7 +12,7 @@
 
 class User < ApplicationRecord
   has_secure_password
-  has_one :profile
+  has_one :profile, inverse_of: :user
   has_many :posts
   has_many :likes
   has_many :liked_posts, through: :likes, source: :post
