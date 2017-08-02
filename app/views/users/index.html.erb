@@ -1,0 +1,30 @@
+<h4 class="ui dividing header">Yazar Listesi</h4>
+
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th colspan="2">Yazar Adı</th>
+      <th>Yazı Sayısı</th>
+      <th>Yorum Sayısı</th>
+      <th>Profil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td colspan="2" class="collapsing">
+          <%= user.full_name %>
+        </td>
+        <td>
+          <%= user.posts.count %>
+        </td>
+        <td>
+          <%= user.comments.count %>
+        </td>
+        <td>
+          <%= link_to '<i class="eye icon"></i>'.html_safe, user_path(user) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
