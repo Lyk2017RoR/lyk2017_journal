@@ -12,21 +12,21 @@
   </thead>
   <tbody>
   <% @posts.each_with_index do |post, index| %>
-      <tr>
-        <td class="row"><%= index + 1 %></td>
-        <td colspan="2" class="collapsing">
-          <%= link_to post.title, post_path(post) %>
-        </td>
-        <td>
-          <%= link_to post.author.full_name, user_path(post.author) %>
-        </td>
-        <td>
-          <%= post.comments.count %>
-        </td>
-        <td>
-          <%= post.created_at.to_formatted_s(:long) %>
-        </td>
-      </tr>
+    <tr>
+      <td class="row"><%= index + 1 %></td>
+      <td colspan="2" class="collapsing">
+        <%= link_to post.title, post_path(post) %>
+      </td>
+      <td>
+        <%= link_to post.author.full_name, user_path(post.author) %>
+      </td>
+      <td>
+        <%= post.comments.count %>
+      </td>
+      <td>
+        <%= post.created_at.to_formatted_s(:long) %>
+      </td>
+    </tr>
   <% end %>
   </tbody>
 </table>
