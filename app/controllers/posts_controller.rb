@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authorize, except: [:index, :show]
   before_action :find_post, only: [:edit, :show, :destroy, :update]
   def index
-    @posts = Post.all
+    @posts = Post.where(status: :visible)
   end
 
   def new
