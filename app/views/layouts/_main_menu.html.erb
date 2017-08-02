@@ -13,6 +13,7 @@
       Hesabım <i class="dropdown icon"></i>
       <div class="menu">
         <%= link_to 'Profilim', user_path(current_user), class: 'item' %>
+        <%= link_to 'Profilimi Düzenle', edit_user_path(current_user), class: 'item' %>
         <%= link_to 'Çıkış Yap', session_path(current_user), method: :delete, class: 'item' %>
       </div>
     </div>
