@@ -16,7 +16,7 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'rspec-rails'

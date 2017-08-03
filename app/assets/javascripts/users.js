@@ -11,20 +11,16 @@ $(document).ready(function (){
 });
 
 function open_terms_modal() {
-  $('#terms')
-  .modal({
-    closable: false,
-    onDeny: function(){
-      set_terms_status(false);
-    },
-    onApprove: function(){
-      set_terms_status(true);
-    },
-    onClose: function(){
-      set_terms_status(false);
-    }
-  })
-  .modal('show');
+  set_terms_status(false);
+  $('#terms').modal('show');
+
+  $('#terms button.ok').click(function(event){
+    set_terms_status(true);
+  });
+
+  $('#terms button.deny').click(function (event) {
+    set_terms_status(false);
+  });
 }
 
 function set_terms_status(status) {

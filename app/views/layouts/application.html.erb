@@ -10,9 +10,10 @@
 
   <body>
     <%= render 'layouts/main_menu' %>
-    <div id="main_area" class="ui container">
+    <div id="main_area" class="container">
       <%= yield %>
     </div>
+    <%= render 'layouts/footer' %>
 
     <% flash.each do |type, message| %>
       <div class="hide pnotify-notification" data-type="<%= type %>" data-message="<%= message %>"></div>

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require pnotify.custom
-//= require semantic-ui
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require_tree .
