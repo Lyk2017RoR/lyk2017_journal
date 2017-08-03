@@ -20,6 +20,8 @@
           <li><%= link_to 'Profilim', user_path(current_user), class: 'item' %></li>
           <li><%= link_to 'Profilimi Düzenle', edit_user_path(current_user), class: 'item' %></li>
           <li><%= link_to 'Çıkış Yap', session_path(current_user), method: :delete, class: 'item' %></li>
+          <li><%= link_to 'TR', root_path(lang: 'tr')%>
+          <li><%= link_to 'EN', root_path(lang: 'en')%>
         <% else %>
           <li><%= link_to 'Kayıt Ol', new_user_path, class: 'item' %></li>
           <li><%= link_to 'Giriş Yap', new_session_path, class: 'item' %></li>

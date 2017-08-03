@@ -1,5 +1,9 @@
-<div class="page-header">
-  <h4>Günlük Listesi</h4>
+<% content_for :page_title do %>
+  Günlükler
+<% end %>
+
+<div class="float-right">
+  <%= link_to 'Yeni Yazı Ekle', new_post_path %>
 </div>
 
 <table class="table table-striped">
@@ -13,22 +17,6 @@
   </tr>
   </thead>
   <tbody>
-  <% @posts.each_with_index do |post, index| %>
-    <tr>
-      <td><%= index + 1 %></td>
-      <td colspan="2">
-        <%= link_to post.title, post_path(post) %>
-      </td>
-      <td>
-        <%= link_to post.author.full_name, user_path(post.author) %>
-      </td>
-      <td>
-        <%= post.comments.count %>
-      </td>
-      <td>
-        <%= post.created_at.to_formatted_s(:long) %>
-      </td>
-    </tr>
-  <% end %>
+  <%= render @posts %>
   </tbody>
 </table>

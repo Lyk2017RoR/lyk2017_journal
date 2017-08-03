@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  before_action :set_locale
+
   protect_from_forgery with: :exception
 
   def current_user
@@ -9,4 +12,9 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to new_session_path unless current_user
   end
+
+  def set_locale
+  	I18n.locale = params[:lang] || I18n.default_locale
+  end
+
 end

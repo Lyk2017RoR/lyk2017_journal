@@ -7,9 +7,7 @@ Created by <%= time_ago_in_words @post.created_at %> ago
 <% end %>
 <br />
 <ul>
-<% @post.comments.each do |comment| %>
-  <%= render "comments/comment", comment: comment %>
-<% end %>
+  <%= render @post.comments %>
 </ul>
 <br />
 <%= render partial: 'comments/form' %>

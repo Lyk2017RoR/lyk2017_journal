@@ -29,6 +29,10 @@ class Post < ApplicationRecord
   validate :check_comment_size, on: :create
   validate :check_time_limit_on_update, on: :update
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
   def check_comment_size
     comment_size = author.comments.size
     errors[:base] << "Minimum <strong>5</strong> comment
