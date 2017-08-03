@@ -5,7 +5,7 @@ Created by #{time_ago_in_words @post.created_at} ago
   = link_to "Edit", edit_post_path(@post)
   = link_to 'Delete', post_path(@post), method: :delete
 %br/
-%ul
+%ul#comments
   = render @post.comments
 %br/
 = render partial: 'comments/form'

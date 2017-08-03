@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+  alert('Silinemedi');
+<% else %>
+  $("#<%= dom_id @comment %>").fadeOut('fast', function(){
+      this.remove();
+  });
+<% end %>

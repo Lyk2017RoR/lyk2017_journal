@@ -1,0 +1,6 @@
+var comment_form = $("#new_comment");
+<% unless @comment.errors.any? %>
+  comment_form[0].reset();
+  $("#comments").append("<%= j(render @comment) %>");
+  $("#<%= dom_id @comment %> a").effect('highlight');
+<% end %>

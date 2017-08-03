@@ -1,6 +1,8 @@
-%li
-  = link_to '[x]', post_comment_path(comment.post, comment),           |
-    method: :delete,                                                   |
-    data: {confirm: 'Are you sure?'} if comment.author == current_user |
+%li{ id: dom_id(comment) }
+  - if comment.author == current_user
+    = link_to '[x]', post_comment_path(comment.post, comment),
+      method: :delete,
+      remote: true,
+      data: {confirm: 'Are you sure?', "disable-with": "Deleting..." }
   = comment.body
   %small= comment.try(:author).try(:email)
