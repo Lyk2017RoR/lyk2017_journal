@@ -1,0 +1,14 @@
+- content_for :page_title do
+  Günlükler
+.float-right
+  = link_to 'Yeni Yazı Ekle', new_post_path
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th{:colspan => "2"} Günlük Başlığı
+      %th Yazar
+      %th Yorum Sayısı
+      %th Yayınlanma Tarihi
+  %tbody
+    = render @posts

@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Lyk2017Blog
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'layouts/main_menu'
+    #main_area.ui.container
+      %h1= t('page_name')
+      %h1= yield :page_title
+      #main_area.container
+        = yield
+      = render 'layouts/footer'
+      - flash.each do |type, message|
+        .hide.pnotify-notification{"data-message" => message, "data-type" => type}

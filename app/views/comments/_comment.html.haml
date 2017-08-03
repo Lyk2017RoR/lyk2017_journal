@@ -1,0 +1,6 @@
+%li
+  = link_to '[x]', post_comment_path(comment.post, comment),           |
+    method: :delete,                                                   |
+    data: {confirm: 'Are you sure?'} if comment.author == current_user |
+  = comment.body
+  %small= comment.try(:author).try(:email)

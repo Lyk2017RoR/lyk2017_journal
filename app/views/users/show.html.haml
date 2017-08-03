@@ -1,0 +1,60 @@
+.page-header
+  %h4= @user.full_name
+#user_show.row
+  .col-md-3
+    = image_tag @user.profile.medium_photo, class: 'img-rounded img-responsive'
+  .col-md-9
+    %div
+      %ul.nav.nav-tabs{:role => "tablist"}
+        %li.active{:role => "presentation"}
+          %a{"aria-controls" => "about", "data-toggle" => "tab", :href => "#about", :role => "tab"}
+            Hakkında
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "posts", "data-toggle" => "tab", :href => "#posts", :role => "tab"}
+            Yazılar
+            %span.badge= @posts.count
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "comments", "data-toggle" => "tab", :href => "#comments", :role => "tab"}
+            Yorumlar
+            %span.badge= @comments.count
+      .tab-content
+        #about.tab-pane.fade.in.active{:role => "tabpanel"}
+          %table.table.table-striped
+            %tbody
+              %tr
+                %td Adı
+                %td= @user.profile.first_name
+              %tr
+                %td Soyadı
+                %td= @user.profile.last_name
+              %tr
+                %td Kayıt Tarihi
+                %td= @user.created_at.to_formatted_s(:long)
+        #posts.tab-pane.fade{:role => "tabpanel"}
+          %table.table.table-striped
+            %thead
+              %tr
+                %th #
+                %th Yazı Başlığı
+                %th Yorum Sayısı
+                %th Yayınlanma Tarihi
+            %tbody
+              - @posts.each_with_index do |post, index|
+                %tr
+                  %td.row= index + 1
+                  %td= link_to post.title, post_path(post)
+                  %td= post.comments.count
+                  %td= post.created_at.to_formatted_s(:long)
+        #comments.tab-pane.fade{:role => "tabpanel"}
+          %table.table.table-striped
+            %thead
+              %tr
+                %th #
+                %th Yazı
+                %th Yayınlanma Tarihi
+            %tbody
+              - @comments.each_with_index do |comment, index|
+                %tr
+                  %td.row= index + 1
+                  %td= link_to comment.post.title, post_path(comment.post)
+                  %td= comment.created_at.to_formatted_s(:long)
