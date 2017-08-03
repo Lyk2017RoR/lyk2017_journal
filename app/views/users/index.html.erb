@@ -1,6 +1,8 @@
-<h4 class="ui dividing header">Yazar Listesi</h4>
+<div class="page-header">
+  <h4>Yazar Listesi</h4>
+</div>
 
-<table class="ui striped table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>#</th>
@@ -12,8 +14,8 @@
   <tbody>
     <% @users.each_with_index do |user, index| %>
       <tr>
-        <td class="row"><%= index + 1 %></td>
-        <td colspan="2" class="collapsing">
+        <td><%= index + 1 %></td>
+        <td colspan="2">
           <%= link_to user.full_name, user_path(user) %>
         </td>
         <td>

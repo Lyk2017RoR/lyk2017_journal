@@ -1,83 +1,94 @@
-<h4 class="ui dividing header"><%= @user.full_name %></h4>
+<div class="page-header">
+  <h4><%= @user.full_name %></h4>
+</div>
 
 
-<div id="user_show" class="ui grid">
-  <div class="four wide column">
-    <%= image_tag @user.profile.medium_photo, class: 'ui medium rounded image' %>
+<div id="user_show" class="row">
+  <div class="col-md-3">
+    <%= image_tag @user.profile.medium_photo, class: 'img-rounded img-responsive' %>
   </div>
-  <div class="twelve wide column">
-    <div id="user_profile_tab" class="ui secondary pointing menu">
-      <a class="active item" data-tab="first">
-        Hakkında
-      </a>
-      <a class="item" data-tab="second">
-        Yazılar
-        <span class="ui blue circular label"><%= @user.posts.count %></span>
-      </a>
-      <a class="item" data-tab="third">
-        Yorumlar
-        <span class="ui blue circular label"><%= @user.comments.count %></span>
-      </a>
-    </div>
-    <div class="ui tab segment active" data-tab="first">
-      <table class="ui striped table">
-        <tbody>
-          <tr>
-            <td>Adı</td>
-            <td><%= @user.profile.first_name %></td>
-          </tr>
-          <tr>
-            <td>Soyadı</td>
-            <td><%= @user.profile.last_name %></td>
-          </tr>
-          <tr>
-            <td>Kayıt Tarihi</td>
-            <td><%= @user.created_at.to_formatted_s(:long) %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="ui tab segment" data-tab="second">
-      <table class="ui striped table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Yazı Başlığı</th>
-            <th>Yorum Sayısı</th>
-            <th>Yayınlanma Tarihi</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @posts.each_with_index do |post, index| %>
+  <div class="col-md-9">
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#about" aria-controls="about" role="tab" data-toggle="tab">
+            Hakkında
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#posts" aria-controls="posts" role="tab" data-toggle="tab">
+            Yazılar <span class="badge"><%= @posts.count %></span>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">
+            Yorumlar <span class="badge"><%= @comments.count %></span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="about">
+          <table class="table table-striped">
+            <tbody>
             <tr>
-              <td class="row"><%= index + 1 %></td>
-              <td><%= link_to post.title, post_path(post) %></td>
-              <td><%= post.comments.count %></td>
-              <td><%= post.created_at.to_formatted_s(:long) %></td>
+              <td>Adı</td>
+              <td><%= @user.profile.first_name %></td>
             </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="ui tab segment" data-tab="third">
-      <table class="ui striped table">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>Yazı</th>
-          <th>Yayınlanma Tarihi</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @comments.each_with_index do |comment, index| %>
             <tr>
-              <td class="row"><%= index + 1 %></td>
-              <td><%= link_to comment.post.title, post_path(comment.post) %></td>
-              <td><%= comment.created_at.to_formatted_s(:long) %></td>
+              <td>Soyadı</td>
+              <td><%= @user.profile.last_name %></td>
             </tr>
-        <% end %>
-        </tbody>
-      </table>
+            <tr>
+              <td>Kayıt Tarihi</td>
+              <td><%= @user.created_at.to_formatted_s(:long) %></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="posts">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Yazı Başlığı</th>
+              <th>Yorum Sayısı</th>
+              <th>Yayınlanma Tarihi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @posts.each_with_index do |post, index| %>
+                <tr>
+                  <td class="row"><%= index + 1 %></td>
+                  <td><%= link_to post.title, post_path(post) %></td>
+                  <td><%= post.comments.count %></td>
+                  <td><%= post.created_at.to_formatted_s(:long) %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="comments">
+          <table class="table table-striped ">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Yazı</th>
+              <th>Yayınlanma Tarihi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @comments.each_with_index do |comment, index| %>
+                <tr>
+                  <td class="row"><%= index + 1 %></td>
+                  <td><%= link_to comment.post.title, post_path(comment.post) %></td>
+                  <td><%= comment.created_at.to_formatted_s(:long) %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

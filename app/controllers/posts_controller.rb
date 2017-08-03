@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  before_action :authorize, except: [:index, :show]
-  before_action :find_post, only: [:edit, :show, :destroy, :update]
+  before_action :authorize, except: %i[new edit create update destroy]
+  before_action :find_post, only: %i[edit show update destroy]
+
   def index
-    @posts = Post.where(status: :visible)
+    @posts = Post.includes(:author).where(status: :visible)
   end
 
   def new
@@ -20,8 +21,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @post.update(post_params)
@@ -41,6 +41,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:title, :body, :status)
   end
