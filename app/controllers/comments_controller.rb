@@ -3,18 +3,22 @@ class CommentsController < ApplicationController
   before_action :find_post
   def create
     @comment = @post.comments.build(comment_params)
-
-    if @comment.save
-      redirect_to post_path @post
-    else
-      redirect_to post_path(@post), notice: 'Yorum kaydedilemedi.'
+    @comment.save
+    respond_to do |format|
+      format.html { redirect_to post_path @post }
+      format.js
     end
   end
 
   def destroy
     @comment = Comment.find params[:id]
     @comment.destroy
-    redirect_to post_path(@post), notice: "Yorumunuz silindi"
+    respond_to do |format|
+      format.html {
+        redirect_to post_path(@post), notice: "Yorumunuz silindi"
+      }
+      format.js
+    end
   end
 
   private

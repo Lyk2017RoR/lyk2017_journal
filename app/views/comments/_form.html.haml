@@ -1,0 +1,4 @@
+= form_for [@post, @comment], remote: true do |f|
+  = f.text_area :body
+  %br/
+  = f.submit 'Add Comment', data: { disabled_with: 'Creating...'}

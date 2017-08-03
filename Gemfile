@@ -17,6 +17,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'haml-rails', '~> 1.0'
 
 group :development, :test do
   gem 'rspec-rails'
