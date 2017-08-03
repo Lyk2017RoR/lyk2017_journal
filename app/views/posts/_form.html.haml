@@ -1,0 +1,17 @@
+- if @post.errors.any?
+  %div{:id => "alert alert-danger"}
+    %h2
+      = pluralize(@post.errors.count, "error")
+      prohibited this post from being saved:
+    %ul
+      - @post.errors.full_messages.each do |msg|
+        %li= raw msg
+- if @post.created_at.present?
+  This post created  #{time_ago_in_words @post.created_at} ago
+= form_for @post do |f|
+  Title: #{f.text_field :title}
+  %br/
+  Body : #{f.text_area :body}
+  %br/
+  Status: #{f.select :status, [:draft, :secret, :visible]}
+  \#{f.submit 'Submit'}

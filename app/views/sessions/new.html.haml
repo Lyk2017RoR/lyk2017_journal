@@ -1,0 +1,10 @@
+.page-header
+  %h4 Üye Giriş Sayfası
+= form_for :user, url: sessions_path do |f|
+  .form-group
+    = f.label :email
+    = f.email_field :email, autofocus: true, autocomplete: :off, required: true, class: 'form-control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, autocomplete: :off, required: true, class: 'form-control'
+  = button_tag 'Giriş Yap', class: 'btn btn-primary btn-block', type: :submit

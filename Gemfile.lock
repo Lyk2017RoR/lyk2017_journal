@@ -121,7 +121,20 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    haml (4.0.7)
+      tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
     heapy (0.1.2)
+    html2haml (2.2.0)
+      erubis (~> 2.7.0)
+      haml (>= 4.0, < 6)
+      nokogiri (>= 1.6.0)
+      ruby_parser (~> 3.5)
     i18n (0.8.6)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -221,6 +234,8 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     ruby_dep (1.5.0)
+    ruby_parser (3.10.1)
+      sexp_processor (~> 4.9)
     rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -236,6 +251,7 @@ GEM
     selenium-webdriver (3.4.4)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    sexp_processor (4.10.0)
     shellany (0.0.1)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
@@ -293,6 +309,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   guard-rspec
+  haml-rails (~> 0.9)
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
